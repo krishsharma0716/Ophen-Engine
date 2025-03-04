@@ -4,6 +4,8 @@
 #include "boardPieceRep.h"
 #include <iostream>
 #include <bitset>
+using namespace std;
+
 
 //board
 std::bitset<64> board[64];
@@ -22,22 +24,78 @@ std::bitset<64> bBishops[64];
 std::bitset<64> bQueen[64];
 std::bitset<64> bKing[64];
 
-int boardPieceRep() {
 
-//Setting up the board
-    //Setting the 1,0: 1 being a piece, 0 being empty square
-    for(int n = 0; n < 2; ++n) {
-        for(int i = 0; i < 16; i++){
-            board->flip(i+(n*48));
+     void boardPieceRep::setBoard(){
+        //Setting up the board
+        //Setting the 1,0: 1 being a piece, 0 being empty square
+        for(int n = 0; n < 2; ++n) {
+            for(int i = 0; i < 16; i++){
+                board->flip(i+(n*48));
+            }
+        }
+         setPawn();
+         setRooks();
+         setKnights();
+         setBishops();
+         setQueens();
+         setKings();
+    }
+
+
+     void boardPieceRep::printBoard() {
+        //printing the board
+        // for(int i = 0; i < 64; ++i) {
+        //     if(i % 8 == 0) {
+        //         std::cout << std::endl;
+        //     }
+        //     std::cout << board->test(i);
+        // }
+
+         for (int i = 0; i < 64; i++) {
+             for (int i = 0; i < 6; i++) {
+
+             }
+         }
+    }
+
+     void boardPieceRep::setPawn(){
+        for(int i = 0; i < 8; i++) {
+            wPawns->flip(48+i);
+            bPawns->flip(8+i);
         }
     }
-    //printing the board
-    for(int i = 0; i < 64; ++i) {
-        if(i % 8 == 0) {
-            std::cout << std::endl;
-        }
-    std::cout << board->test(i);
-    }
 
-}
+    void boardPieceRep::setRooks() {
+         wRooks->flip(55);
+         wRooks->flip(63);
+         bRooks->flip(0);
+         bRooks->flip(7);
+     }
+
+    void boardPieceRep::setKnights() {
+         wKnights->flip(56);
+         wKnights->flip(62);
+         bKnights->flip(1);
+         bKnights->flip(6);
+     }
+
+void boardPieceRep::setBishops() {
+         wBishops->flip(57);
+         wBishops->flip(61);
+         bBishops->flip(2);
+         bBishops->flip(5);
+     }
+void boardPieceRep::setQueens() {
+         wQueen->flip(58);
+         bQueen->flip(3);
+     }
+void boardPieceRep::setKings() {
+         wKing->flip(59);
+         bKing->flip(4);
+     }
+
+
+
+
+
 
