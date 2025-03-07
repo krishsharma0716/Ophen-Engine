@@ -23,8 +23,8 @@ std::bitset<64> bBishops[64];
 std::bitset<64> bQueen[64];
 std::bitset<64> bKing[64];
 
-//bitset arr[12] = {wPawns, wRooks, wKnights, wBishops, wQueen, wKing, bPawns, bRooks, bKnights, bBishops, bQueen, bKing};
-//string narr[12] = {"wPawn", "wRook", "wKnights", "wBishops", "wQueen", "wKing", "bPawn", "bRook", "bKnight", "bBishop", "bQueen", "bKing"};
+std::bitset<64>* arr[12] = {wPawns, wRooks, wKnights, wBishops, wQueen, wKing, bPawns, bRooks, bKnights, bBishops, bQueen, bKing};
+string narr[12] = {"wPawns", "wRooks", "wKnights", "wBishops", "wQueen", "wKing", "bPawn", "bRook", "bKnight", "bBishop", "bQueen", "bKing"};
      void boardPieceRep::setBoard(){
         //Setting up the board
         //Setting the 1,0: 1 being a piece, 0 being empty square
@@ -43,24 +43,23 @@ std::bitset<64> bKing[64];
 
 
      void boardPieceRep::printBoard() {
-        //printing the board
-        for(int i = 0; i < 64; ++i) {
-            if(i % 8 == 0) {
-                std::cout << std::endl;
-            }
-            std::cout << board->test(i);
-        }
 
-         // for (int i = 0; i < 64; i++) {
-         //     if(i % 8 == 0) {
-         //         std::cout << std::endl;
-         //     }
-         //     for (int n = 0; n < 12; n++) {
-         //        if(board->test(i) & arr[n]->test(i)) {
-         //            std::cout << narr[n] << ", ";
-         //        }
-         //     }
-         // }
+         for (int i = 0; i < 64; i++) {
+             if(i % 8 == 0) {
+                 std::cout << std::endl;
+             }
+             for (int n = 0; n < 12; n++) {
+                 if (!board->test(i)) {
+                     std::cout << "empty, ";
+                     break;
+                 }
+                if(board->test(i) && arr[n]->test(i)) {
+                    std::cout << narr[n] << ", ";
+                    break;
+                }
+
+             }
+         }
     }
 
      void boardPieceRep::setPawn(){
