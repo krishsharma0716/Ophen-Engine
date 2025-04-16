@@ -1,9 +1,10 @@
 #include "boardPieceRep.h"
-#include </Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/>
+#include <iostream>
+#include "string"
+using namespace std;
+
 
 int main() {
-    NS::AutoreleasePool
-    boardPieceRep::setBoard();
-    boardPieceRep::printBoard();
-}
+    boardPieceRep::printBoard(boardPieceRep::getPiece("wQueen"));
 
+}
